@@ -20,9 +20,12 @@ const Formulario = () => {
       setNombre(paciente.nombre);
       setPropietario(paciente.propietario);
       setEmail(paciente.email);
-      setFechaDeAlta(paciente.fechaDeAlta);
       setSintomas(paciente.sintomas);
 
+    // Asegurarse de que la fecha esté en el formato correcto
+    const formattedDate = new Date(paciente.fechaDeAlta).toISOString().split("T")[0];
+    setFechaDeAlta(formattedDate);
+      
       // Identificar si se está editando o creando un nuevo registro
       setId(paciente._id);
     }
