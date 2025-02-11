@@ -23,11 +23,9 @@ const Formulario = () => {
       setSintomas(paciente.sintomas);
 
     // Asegurarse de que la fecha esté en el formato correcto
-    const formattedDate = new Date(paciente.fechaDeAlta).toLocaleDateString("es-CO", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      }).split("/").reverse().join("-");
+      const formattedDate = new Date(paciente.fechaDeAlta)
+        .toISOString()
+        .split("T")[0];
       setFechaDeAlta(formattedDate);
       
       // Identificar si se está editando o creando un nuevo registro
