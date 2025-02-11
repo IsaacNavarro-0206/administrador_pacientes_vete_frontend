@@ -6,11 +6,17 @@ const Paciente = ({ paciente }) => {
   const { email, fechaDeAlta, nombre, propietario, sintomas, _id } = paciente;
 
   const formatearFecha = (fecha) => {
-    const nuevaFecha = new Date(fecha);
-    return new Intl.DateTimeFormat("es-CO", { dateStyle: "long" }).format(
-      nuevaFecha
-    );
+  const nuevaFecha = new Date(fecha);
+
+  const opciones = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC", // Especificamos UTC para evitar ajustes
   };
+
+  return new Intl.DateTimeFormat("es-CO", opciones).format(nuevaFecha);
+};
 
   return (
     <div className="bg-white mx-5 my-10 px-5 py-10 rounded-xl shadow-md">
